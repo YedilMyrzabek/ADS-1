@@ -1,30 +1,43 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        int n = 4;
+        int[][] arr = new int[n][n];
 
-        if(tenth(n)){
-            System.out.println(n + " is power of two");
-        }
-        else {
-            System.out.println(n + " is not power of two");
-        }
+        Seventh(arr,4);
+        print(arr);
     }
-    public static boolean tenth(int n) {
-        if (n <= 0) {
-            return false;
-        }
+    public static int[][] Seventh(int[][] arr,int n) {
+        int r1 = 0, r2 = n - 1;
+        int c1 = 0, c2 = n - 1;
+        int val = 1;
+        while (r1 <= r2 && c1 <= c2) {
+            for (int c = c1; c <= c2; c++) arr[r1][c] = val++;
 
-        while (n > 1) {
-            if (n % 2 != 0) {
-                return false;
+            for (int r = r1 + 1; r <= r2; r++) arr[r][c2] = val++;
+
+            if (r1 < r2 && c1 < c2) {
+
+                for (int c = c2 - 1; c > c1; c--) arr[r2][c] = val++;
+
+                for (int r = r2; r > r1; r--) arr[r][c1] = val++;
+
             }
-            n /= 2;
+            r1++;
+            r2--;
+            c1++;
+            c2--;
         }
-        return true;
+        return arr;
+    }
+    public static void print(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int num : row) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
     }
 }
