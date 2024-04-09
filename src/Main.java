@@ -5,16 +5,17 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        first(sc,n);
+        sixth(sc,n);
     }
-    public static void first(Scanner sc,int n){
-        if(n == 0){
+    public static void sixth(Scanner sc,int n){
+        if (n == 0) {
             return;
         }
+        else {
+            String elem = sc.next();
 
-        int num = sc.nextInt();
-
-        first(sc,n-1);
-        System.out.println(num);
+            sixth(sc, n - 1);
+            System.out.println(elem);
+        }
     }
 }
